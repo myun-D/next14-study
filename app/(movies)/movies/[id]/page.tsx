@@ -1,27 +1,21 @@
 import { Suspense } from "react"
 import { API_URL } from "../../../(home)/page"
-import MovieInfo from "../../../../component/movie-info"
+import MovieInfo, { getMovie } from "../../../../component/movie-info"
 import MovieVideos from "../../../../component/movie-videos"
 
-// async function getMovie(id: string) {
-//   console.log(`Fetching movies: ${Date.now()}`)
-//   await new Promise((resolve) => setTimeout(resolve, 5000))
-//   const responsive = await fetch(`${API_URL}/${id}`)
-//   return responsive.json()
-// }
+interface IParams {
+  params: {
+    id: string
+  }
+}
+export async function generateMetadata({ params: { id } }: IParams) {
+  const movie = await getMovie(id)
+  return {
+    title: movie.title,
+  }
+}
 
-// async function getVideos(id: string) {
-//   console.log(`Fetching videos: ${Date.now()}`)
-//   await new Promise((resolve) => setTimeout(resolve, 5000))
-//   const responsive = await fetch(`${API_URL}/${id}/videos`)
-//   return responsive.json()
-// }
-
-export default async function MovieDetail({
-  params: { id },
-}: {
-  params: { id: string }
-}) {
+export default async function MovieDetail({ params: { id } }: IParams) {
   //병렬 구조
   // const [movie, videos] = await Promise.all([getMovie(id), getVideos(id)])
 
