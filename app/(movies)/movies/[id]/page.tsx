@@ -1,5 +1,4 @@
 import { Suspense } from "react"
-import { API_URL } from "../../../(home)/page"
 import MovieInfo, { getMovie } from "../../../../component/movie-info"
 import MovieVideos from "../../../../component/movie-videos"
 
