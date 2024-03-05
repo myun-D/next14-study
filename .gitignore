@@ -1,0 +1,16 @@
+#dependencies
+/node_modules
+yarn.lock
+
+#next.js
+.next/
+/out/
+
+#production
+/build
+
+#mise
+.DS_Store
+
+#local history
+.history/
